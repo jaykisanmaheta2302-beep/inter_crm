@@ -10,6 +10,7 @@ psycopg2-binary = "*"
 python-dotenv = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
+whitenoise = "*"
 
 [dev-packages]
 
