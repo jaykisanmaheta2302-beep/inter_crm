@@ -11,7 +11,7 @@ CSV_FILE = Path("eval_results.csv")
 load_dotenv()
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",    
-    api_key= "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"
+    api_key="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",    
 )
 def save_to_csv(row):
     file_exists = CSV_FILE.exists()
