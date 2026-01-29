@@ -2,17 +2,19 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from datetime import datetime
 from openai import OpenAI
-from dotenv import load_dotenv
 import json
 import os
 import csv
 from pathlib import Path
-CSV_FILE = Path("eval_results.csv")
-load_dotenv()
-client = OpenAI(
-    base_url="https://openrouter.ai/api/v1",    
-    api_key="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",             
+from django.conf import settings
 
+CSV_DIR = settings.BASE_DIR / "data"
+CSV_DIR.mkdir(exist_ok=True)
+
+CSV_FILE = Path("eval_results.csv")
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=os.getenv("OPENAI_API_KEY"),    
 )
 def save_to_csv(row):
     file_exists = CSV_FILE.exists()
